@@ -1,5 +1,6 @@
 import java.util.Random;
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 public class Main {
   
@@ -19,8 +20,8 @@ public class Main {
    public static String flipNHeads(int n){
     int headsInARow = 0;
     int totalFlips = 0;
+    Random myRandom = new Random();
     while (headsInARow < n){
-      Random myRandom = new Random();
       float myRandNum = myRandom.nextFloat();
       if (myRandNum > 0.5){
         System.out.println("Heads");
@@ -38,17 +39,14 @@ public class Main {
 
   public static void clock(){
     LocalDateTime now = LocalDateTime.now();
-    int hour = now.getHour();
-    int minute = now.getMinute();
     int second = now.getSecond();
 
     while (true){
       if (second != LocalDateTime.now().getSecond()){
         now = LocalDateTime.now();
-        hour = now.getHour();
-        minute = now.getMinute();
         second = now.getSecond();
-        System.out.println(hour + ":" + minute + ":" + second);
+        String time = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        System.out.println(time);
       }
     }
   }
@@ -58,7 +56,6 @@ public class Main {
     String word = "turtle";
     int num = 3;
 
-    
     System.out.println("I own " + num + " " + pluralize(word, num)+ ".");
     System.out.println(flipNHeads(1));
     clock();
