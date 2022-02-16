@@ -16,7 +16,7 @@ class LibraryTest {
         Library sut = new Library();
         sut.roll(6);
         sut.roll(5);
-        //assertEquals(ArrayList<Integer> = new ArrayList<>(n), );
+        assertEquals(5, sut.roll(5).size(), "The following, testRolls, did not pass");
     }
 
     @Test
@@ -24,7 +24,7 @@ class LibraryTest {
         Library sut = new Library();
         int[] array = {1,2,4,5,6,6};
         int[] array2 = {1,2,4,5,6};
-        assertTrue(sut.containsDuplicates(array), "The following, testContainsDuplicates did not pass.");
+        assertTrue(sut.containsDuplicates(array), "The following, testContainsDuplicates, did not pass.");
     }
 
     @Test
