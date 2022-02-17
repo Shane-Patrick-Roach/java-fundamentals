@@ -6,12 +6,14 @@
 
 - [Lab 1: Basic](/basics/Main.java)
 - Lab 2: Basic Library
+- Lab 3: Basic Library + linter
 
 
 
 
 
 ### Lab 1
+---
 
 #### Feature Task 1
 
@@ -28,6 +30,7 @@
 
 
 ### Lab 2
+---
 
 #### Feature Task 1
 
@@ -48,3 +51,18 @@
 
 - Added a method that returns the array with the lowest average within an array of arrays.
 - Added a test that determines if a certain array of arrays evalutes to a known array.
+
+
+
+### Lab 3
+---
+
+#### Feature Task 1
+
+- Added a function to analyze weather data. Returns a string of min,max and any values not seen between those extremes.
+- Added a test to ensure method returns appropraite value.
+
+#### Feature Task 2
+
+- Added a function that tallies the votes from a list of strings. Returns the string with most occurences. 
+- Added a test to check whether an appropriate value is returned.
