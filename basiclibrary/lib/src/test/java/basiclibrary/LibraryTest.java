@@ -47,5 +47,42 @@ class LibraryTest {
         sut.highestAverageArray(arrayOfArray);
         assertEquals("[5, 5, 5]", sut.highestAverageArray(arrayOfArray), "The following, testArraysOfArrays did not pass.");
     }
+
+
+    @Test
+    void testAnalyzeWeatherData() {
+        Library sut = new Library();
+
+        int[][] weeklyMonthTemperatures = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+
+        assertEquals("Min: 51\n" +
+                "Max: 72\n" +
+                "Never saw temperature: 63\n" +
+                "Never saw temperature: 67\n" +
+                "Never saw temperature: 68\n" +
+                "Never saw temperature: 69",
+                sut.analyzeWeatherData(weeklyMonthTemperatures),
+                "The following function, analyzeWeatherData, did not pass."
+        );
+
+    };
+
+    @Test
+    void testTallyVotes() {
+        Library sut = new Library();
+
+        String[] votes = {"Bush","Bush","Bush","Bush","Hedge","Hedge" };
+        String[] votes2 = {"Cat", "Frog", "Dog", "Dog"};
+
+        assertEquals("Bush received the most votes!", sut.tally(votes), "The following function, tally, did not pass.");
+        assertEquals("Dog received the most votes!", sut.tally(votes2), "The following function, tally, did not pass.");
+
+    }
+
 }
 

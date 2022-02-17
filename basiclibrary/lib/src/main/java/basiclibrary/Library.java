@@ -3,10 +3,8 @@
  */
 package basiclibrary;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Library {
     public ArrayList<Integer> roll(int n){
@@ -48,7 +46,7 @@ public class Library {
     public int averageOfArray(int[] array){
         int bucket = 0;
         for (int i = 0; i < array.length; i++){
-            bucket = bucket + array[i];
+            bucket += array[i];
         }
         int average = bucket/array.length;
 
@@ -63,8 +61,7 @@ public class Library {
             int bucket = 0;
             int lengthArray = array[i].length;
             for (int innerArray = 0; innerArray < array[i].length; innerArray++){
-                bucket = bucket + array[i][innerArray];
-
+                bucket += array[i][innerArray];
             }
             bucketArray.add(bucket/lengthArray);
         }
@@ -73,4 +70,63 @@ public class Library {
 
         return Arrays.toString(array[indexOfMax]);
     }
+
+    public String analyzeWeatherData(int[][] array){
+        HashSet<Integer> uniqueWeatherValues = new HashSet<>();
+
+        for (int i = 0; i < array.length; i++){
+            for (int j = 0; j< array[i].length; j++){
+                uniqueWeatherValues.add(array[i][j]);
+            }
+        }
+
+        ArrayList<String> missingWeatherTemps = new ArrayList<>();
+
+        int max = Collections.max(uniqueWeatherValues);
+        int min = Collections.min(uniqueWeatherValues);
+        missingWeatherTemps.add("Min: "+ min);
+        missingWeatherTemps.add("Max: "+ max);
+
+
+
+        for (int i = min; i < min + (max-min); i++ ) {
+            if (!uniqueWeatherValues.contains(i)) {
+                missingWeatherTemps.add("Never saw temperature: " + i);
+            }
+        }
+
+        String str = missingWeatherTemps.stream().collect(Collectors.joining("\n"));
+        return str;
+    }
+
+    public String tally(String[] votes){
+
+        HashMap<String, Integer> tallyVotesMap = new HashMap<>();
+
+        for (String person : votes){
+            if (tallyVotesMap.containsKey(person)){
+                int numOfTimes = tallyVotesMap.get(person);
+                tallyVotesMap.put(person, numOfTimes + 1);
+            } else {
+                tallyVotesMap.put(person, 1);
+            }
+        }
+
+        int max = Collections.max(tallyVotesMap.values());
+        List<String> winner = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : tallyVotesMap.entrySet()){
+            if (entry.getValue()==max) {
+                winner.add(entry.getKey());
+            }
+        }
+
+        String voterWinner = "";
+        for (String person : winner){
+            voterWinner = person + " received the most votes!";
+        }
+
+        return voterWinner;
+    }
+
+
 }
