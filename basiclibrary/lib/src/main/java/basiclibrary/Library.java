@@ -87,8 +87,6 @@ public class Library {
         missingWeatherTemps.add("Min: "+ min);
         missingWeatherTemps.add("Max: "+ max);
 
-
-
         for (int i = min; i < min + (max-min); i++ ) {
             if (!uniqueWeatherValues.contains(i)) {
                 missingWeatherTemps.add("Never saw temperature: " + i);

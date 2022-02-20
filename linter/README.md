@@ -1,4 +1,5 @@
 # Linter
+
 ---
 
 ## Feature Task 1
@@ -18,3 +19,8 @@
 ### 2/16/21
 
 - WIP added structure of code but not able to access correct file path. Will ask for help in lab tomorrow.
+
+
+### 2/20/21
+
+- Finished Lab. Could not get test to work on empty file. Something was happening within code that would not produce the deried error output.

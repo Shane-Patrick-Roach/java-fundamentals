@@ -66,3 +66,8 @@
 
 - Added a function that tallies the votes from a list of strings. Returns the string with most occurences. 
 - Added a test to check whether an appropriate value is returned.
+
+#### Feature Task 3
+ 
+- Added Linter that loads in a file to be lintered and checks for syntax errors
+- Added tests to check a file with no errors, one error, few errors, and many errors. 

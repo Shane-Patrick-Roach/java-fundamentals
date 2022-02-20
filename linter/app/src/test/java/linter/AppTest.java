@@ -7,8 +7,101 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+    @Test
+    public void testOneErrorFile(){
+
+        String filename = "gateOneError.js";
+
+        String[] arguments = new String[1];
+        arguments[0] = filename;
+
+        App sut = new App(arguments);
+        assert(sut.toString().equals("Line 11: Missing semicolon.\n" +
+                "end"));
     }
+
+
+    @Test
+    public void testFewErrorsFile(){
+
+        String filename = "gateFewErrors.js";
+
+        String[] arguments = new String[1];
+        arguments[0] = filename;
+
+        App sut = new App(arguments);
+        assert(sut.toString().equals("Line 11: Missing semicolon.\n" +
+                "Line 15: Missing semicolon.\n" +
+                "Line 40: Missing semicolon.\n" +
+                "Line 41: Missing semicolon.\n" +
+                "end"));
+    }
+
+    @Test
+    public void testNoErrorsFile(){
+
+        String filename = "gateNoErrors.js";
+
+        String[] arguments = new String[1];
+        arguments[0] = filename;
+
+        App sut = new App(arguments);
+        assert(sut.toString().equals("No errors found.\n" +
+                "end"));
+    }
+
+    @Test
+    public void testManyErrorsFile(){
+
+        String filename = "gateManyErrors.js";
+
+        String[] arguments = new String[1];
+        arguments[0] = filename;
+
+        App sut = new App(arguments);
+        assert(sut.toString().equals("Line 3: Missing semicolon.\n" +
+                        "Line 5: Missing semicolon.\n" +
+                        "Line 11: Missing semicolon.\n" +
+                        "Line 13: Missing semicolon.\n" +
+                        "Line 15: Missing semicolon.\n" +
+                        "Line 26: Missing semicolon.\n" +
+                        "Line 28: Missing semicolon.\n" +
+                        "Line 32: Missing semicolon.\n" +
+                        "Line 36: Missing semicolon.\n" +
+                        "Line 40: Missing semicolon.\n" +
+                        "Line 41: Missing semicolon.\n" +
+                        "Line 50: Missing semicolon.\n" +
+                        "Line 51: Missing semicolon.\n" +
+                        "Line 64: Missing semicolon.\n" +
+                        "Line 70: Missing semicolon.\n" +
+                        "Line 71: Missing semicolon.\n" +
+                        "Line 72: Missing semicolon.\n" +
+                        "Line 73: Missing semicolon.\n" +
+                        "Line 74: Missing semicolon.\n" +
+                        "Line 76: Missing semicolon.\n" +
+                        "Line 77: Missing semicolon.\n" +
+                        "Line 78: Missing semicolon.\n" +
+                        "Line 79: Missing semicolon.\n" +
+                        "Line 80: Missing semicolon.\n" +
+                        "Line 82: Missing semicolon.\n" +
+                        "Line 83: Missing semicolon.\n" +
+                        "Line 84: Missing semicolon.\n" +
+                        "Line 85: Missing semicolon.\n" +
+                        "Line 86: Missing semicolon.\n" +
+                        "Line 88: Missing semicolon.\n" +
+                        "Line 89: Missing semicolon.\n" +
+                        "Line 90: Missing semicolon.\n" +
+                        "Line 91: Missing semicolon.\n" +
+                        "Line 92: Missing semicolon.\n" +
+                        "Line 94: Missing semicolon.\n" +
+                        "Line 95: Missing semicolon.\n" +
+                        "Line 96: Missing semicolon.\n" +
+                        "Line 97: Missing semicolon.\n" +
+                        "Line 98: Missing semicolon.\n" +
+                        "Line 99: Missing semicolon.\n" +
+                        "Line 100: Missing semicolon.\n" +
+                        "Line 101: Missing semicolon.\n" +
+                "end"));
+    }
+
 }
