@@ -2,51 +2,84 @@ package linter;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.HashMap;
 import java.util.Scanner;
 
 
 public class App {
 
+    String errors;
 
-    public static void main(String[] args) {
-        Path gatesPath = Paths.get("./gates.js");
-        System.out.println(gatesPath.toAbsolutePath());
+    public App(String[] arguments) {
+        String userPath = System.getProperty("user.dir");
+        String resourcesPath = "app/src/main/resources/";
+        String fileName = arguments[0];
 
-//        Scanner gatesScanner = null;
-        Scanner gatesScanner = new Scanner("/Users/shaneroach/projects/401/java-fundamentals/linter/app/src/main/resources/gates.js");
+        if (userPath.endsWith("linter")) {
+            resourcesPath = "app/src/main/resources/";
+        } else {
+            resourcesPath = "src/main/resources/";
+        }
 
-        System.out.println(gatesScanner);
-//        try {
-//            gatesScanner = new Scanner(gatesPath);
-//        }
-//        catch (IOException ioe) {
-//            ioe.printStackTrace();
-//            System.out.println("This file cannot be scanned");
-//            //System.exit(1);
-//        }
-//        finally {
-//            System.out.println("hello");
-//        }
+        String fullFileName = resourcesPath + fileName;
+        Path fileToBeScanned = Path.of(fullFileName);
 
-        HashMap<String, Integer> errorsMap = new HashMap<>();
-        String[] errorString = {";","return"};
+        Scanner fileScanner = null;
 
-        while(gatesScanner.hasNextLine()){
-            String currentLine = gatesScanner.nextLine();
-            for (String error : errorString){
-                if (currentLine.contains(error)){
-                    if (!errorsMap.containsKey(error)){
-                        errorsMap.put(error, 1);
-                    } else {
-                        int currentCount = errorsMap.get(error);
-                        errorsMap.put(error, currentCount + 1);
-                    }
+        try {
+            fileScanner = new Scanner(fileToBeScanned);
+        } catch (IOException e) {
+            e.printStackTrace();
+            //System.out.println("This file cannot be scanned");
+            System.exit(1);
+        } finally {
+            //System.out.println("File was imported");
+        }
+
+        errors = "";
+        int lineNumber = 0;
+
+        if (fileScanner.hasNext()) {
+
+            while (fileScanner.hasNextLine()) {
+
+
+                String line = fileScanner.nextLine();
+                lineNumber++;
+                if (line.isEmpty()) {
+                    continue;
+                } else if (line.endsWith("{") || line.endsWith("}")) {
+                    continue;
+                } else if (line.contains("if") || line.contains("else")) {
+                    continue;
+                } else if (line.startsWith("//"))
+                    continue;
+
+
+                if (!line.endsWith(";")) {
+                    errors += "Line " + lineNumber + ": Missing semicolon.\n";
                 }
+                if (line.contains("'")) {
+                    errors += "Line " + lineNumber + ": Single quote(s) found.\n";
+                }
+            }
+
+            if (errors.equals("")) {
+                errors = "No errors found.\n";
             }
         }
 
-        System.out.println(errorsMap);
+        if (errors.equals("")) {
+                errors = "The file is empty.\n";
+        }
+
+        }
+
+
+
+    @Override
+    public String toString(){
+        String output = errors + "end";
+        return output;
     }
+
 }

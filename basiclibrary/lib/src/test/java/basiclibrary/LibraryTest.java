@@ -48,7 +48,6 @@ class LibraryTest {
         assertEquals("[5, 5, 5]", sut.highestAverageArray(arrayOfArray), "The following, testArraysOfArrays did not pass.");
     }
 
-
     @Test
     void testAnalyzeWeatherData() {
         Library sut = new Library();
