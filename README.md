@@ -12,7 +12,7 @@
 
 
 
-### Lab 1
+### Lab 1: Basics
 ---
 
 #### Feature Task 1
@@ -29,7 +29,8 @@
 
 
 
-### Lab 2
+### Lab 2: Basic Library
+
 ---
 
 #### Feature Task 1
@@ -54,7 +55,8 @@
 
 
 
-### Lab 3
+### Lab 3: Linter + Maps
+
 ---
 
 #### Feature Task 1
@@ -71,3 +73,8 @@
  
 - Added Linter that loads in a file to be lintered and checks for syntax errors
 - Added tests to check a file with no errors, one error, few errors, and many errors. 
+
+### Lab 6: Composition and Inheritence
+---
+
+- Added new project with restaurants and reviews.
