@@ -7,6 +7,8 @@
 - [Lab 1: Basic](/basics/Main.java)
 - Lab 2: Basic Library
 - Lab 3: Basic Library + linter
+- Lab 6: Composition and Inheritence - part 1
+- Lab 7: Composition and Inheritence - part 2
 
 
 
@@ -74,7 +76,12 @@
 - Added Linter that loads in a file to be lintered and checks for syntax errors
 - Added tests to check a file with no errors, one error, few errors, and many errors. 
 
-### Lab 6: Composition and Inheritence
+### Lab 6: Composition and Inheritence - part 1
 ---
 
 - Added new project with restaurants and reviews.
+
+### Lab 7: Composition and Inheritence - part 2
+---
+
+- Added store superclass, and theater subclass. 

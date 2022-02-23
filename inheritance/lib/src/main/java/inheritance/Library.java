@@ -3,7 +3,7 @@
  */
 package inheritance;
 
-import inheritance.restaurant.Restaurant;
+import inheritance.shops.Restaurant;
 
 import java.util.HashSet;
 
